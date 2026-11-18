@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1d2b22">
+  <title>Ice Hills, Vagamon | A resort in the tea hills of Idukki</title>
+  <meta name="description" content="Ice Hills is a hill resort in a tea garden at Valacode, Vagamon, Idukki, Kerala. Valley-view rooms, A-frame cottages and a pool in the tea. Call +91 96050 77755.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/img/hero-day.webp" as="image">
+  <link rel="preload" href="assets/fonts/ambroise.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/sloop-script.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div class="pre-mist" aria-hidden="true"></div>
+    <div class="pre-frame"><i></i><i></i><i></i><i></i></div>
+    <div class="pre-mark">
+      <svg viewBox="0 0 64 40" fill="none"><path d="M2 38 L22 10 L32 22 L42 4 L62 38" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 38 C22 32 42 32 50 38" stroke="currentColor" stroke-width="1.2"/></svg>
+    </div>
+    <div class="pre-center">
+      <span class="pre-side">M I S T</span>
+      <div class="pre-title">
+        <p class="pre-eyebrow"><span>Welcome to</span></p>
+        <h2 id="pre-h2" data-letters>Ice Hills</h2>
+        <span class="pre-script">Vagamon</span>
+      </div>
+      <span class="pre-side">T E A</span>
+    </div>
+    <div class="pre-foot">
+      <div class="pre-meter">
+        <span id="pre-count">00</span>
+        <div class="pre-line"><span id="pre-progress"></span></div>
+      </div>
+      <p class="pre-k">Loading</p>
+      <p class="pre-sub">Valacode, Idukki, Kerala</p>
+    </div>
+  </div>
+
+  <!-- Top header (over the hero) -->
+  <header id="top-header">
+    <a href="#hero" class="emblem" aria-label="Ice Hills home">
+      <svg class="emblem-ring" viewBox="0 0 100 100">
+        <path id="ringPath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
+        <text><textPath href="#ringPath">ICE HILLS • VAGAMON • KERALA •</textPath></text>
+      </svg>
+      <svg class="emblem-mark" viewBox="0 0 64 40" fill="none"><path d="M2 38 L22 10 L32 22 L42 4 L62 38" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
+    </a>
+    <div class="top-links">
+      <a href="#book" class="top-cta">Book your stay</a>
+      <div class="top-sub">
+        <a href="#stay">Rooms</a><span>•</span><a href="#location">Location</a><span>•</span><a href="tel:+919605077755">Call</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Floating pill nav (after the hero) -->
+  <nav id="pill-nav" aria-label="Sections">
+    <span id="pill-indicator"></span>
+    <a href="#about" data-target="about">Resort</a>
+    <a href="#pool" data-target="pool">Pool</a>
+    <a href="#stay" data-target="stay">Stay</a>
+    <a href="#experiences" data-target="experiences">Experiences</a>
+    <a href="#location" data-target="location">Location</a>
+    <a href="#book" data-target="book" class="pill-book">Book</a>
+  </nav>
+
+  <button id="sound-toggle" aria-label="Toggle sound" title="Sound">
+    <span></span><span></span><span></span><span></span><span></span>
+  </button>
+
+  <main>
+
+    <!-- HERO: 3D sky + title behind the resort + Primland clouds in front -->
+    <section id="hero" data-mode="day">
+      <div class="hero-sticky">
+        <canvas id="sky-canvas" aria-hidden="true"></canvas>
+
+        <div id="hero-fg" class="hero-fg-layer">
+          <img src="assets/img/hero-day.webp" alt="Ice Hills resort building on a tea garden hill in Vagamon" id="hero-day-img">
+          <img src="assets/img/hero-night.webp" alt="" id="hero-night-img" aria-hidden="true">
+          <div class="hero-fog"></div>
+        </div>
+
+        <div id="hero-title" class="hero-title-layer">
+          <p class="hero-eyebrow"><span>Welcome to</span></p>
+          <h1 class="hero-h1"><span class="ht-line">Ice Hills</span></h1>
+          <span class="hero-script">Vagamon</span>
+        </div>
+
+        <canvas id="mist-canvas" aria-hidden="true"></canvas>
+
+        <div class="hero-ui">
+          <p class="hero-loc">Valacode, Idukki, Kerala</p>
+          <div class="hero-actions">
+            <a href="#about" class="btn-copper"><span>Explore the resort</span></a>
+            <a href="#book" class="btn-ghost">Book your stay</a>
+          </div>
+        </div>
+
+        <div class="hero-bottom">
+          <span class="hb-side">Above the mist</span>
+          <div class="mode-tabs" role="tablist" aria-label="Atmosphere">
+            <button class="mode-btn is-active" data-mode="day" role="tab">By day</button>
+            <i></i>
+            <button class="mode-btn" data-mode="night" role="tab">By night</button>
+            <i></i>
+            <button class="mode-btn" data-mode="mist" role="tab">In mist</button>
+          </div>
+          <span class="hb-side">In the tea</span>
+        </div>
+
+        <div class="hero-scroll-cue"><span>Scroll</span><i></i></div>
+
+        <div class="hero-card">
+          <div class="hc-head"><span class="hc-script">Ice Hills</span><button aria-label="Close" onclick="this.closest('.hero-card').remove()">&times;</button></div>
+          <p>A hill resort in a working tea garden, with valley-view rooms, A-frame cottages and a pool in the tea.</p>
+          <div class="hc-foot"><a href="#stay">Rooms</a><span>/</span><a href="#book">Book a stay</a></div>
+        </div>
+
+        <div id="hero-mist-out"></div>
+        <div id="hero-mist-text">
+          <span class="eyebrow light">Vagamon · Idukki</span>
+          <p>Where the mist settles on the tea each morning, and lifts to show the hills.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Tea garden stays</span><i>✦</i><span>Pool in the tea</span><i>✦</i><span>A-frame cottages</span><i>✦</i><span>Valley-view rooms</span><i>✦</i><span>Misty mornings</span><i>✦</i><span>Vagamon hills</span><i>✦</i>
+        <span>Tea garden stays</span><i>✦</i><span>Pool in the tea</span><i>✦</i><span>A-frame cottages</span><i>✦</i><span>Valley-view rooms</span><i>✦</i><span>Misty mornings</span><i>✦</i><span>Vagamon hills</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="sec-cream">
+      <div class="wrap about-grid">
+        <div class="about-left">
+          <span class="eyebrow">The resort</span>
+          <p class="statement" data-split>Ice Hills sits on a tea covered hill in Vagamon. Wake up above the mist, walk out into the tea, and watch the Western Ghats fold away into the distance.</p>
+          <div class="facts">
+            <div class="fact" data-reveal>
+              <span class="fact-n">01</span>
+              <h4>Tea on every side</h4>
+              <p>The resort stands inside a working tea garden, with paths running between the rows.</p>
+            </div>
+            <div class="fact" data-reveal>
+              <span class="fact-n">02</span>
+              <h4>A pool in the tea</h4>
+              <p>An outdoor pool and sun deck that look across the valley to the hills.</p>
+            </div>
+            <div class="fact" data-reveal>
+              <span class="fact-n">03</span>
+              <h4>Rooms and cottages</h4>
+              <p>Glass-fronted rooms in the main building and A-frame cottages out in the garden.</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-right">
+          <figure class="about-img about-img-a" data-parallax="-0.12">
+            <img src="assets/img/window-view.webp" alt="View of the tea garden and hills from a room window">
+          </figure>
+          <figure class="about-img about-img-b" data-parallax="0.1">
+            <img src="assets/img/cottages.webp" alt="A-frame cottages in the tea garden">
+          </figure>
+          <div class="about-badge"><span>Since</span><strong>Hawk</strong><span>Hospitality</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POOL: an arch window opens into a guided view of the pool -->
+    <section id="pool" class="arch-sec">
+      <div class="arch-sticky">
+        <div class="arch-top">
+          <span class="eyebrow">The pool</span>
+          <span class="arch-top-r">Ice Hills &middot; Vagamon</span>
+        </div>
+
+        <h2 class="arch-title" aria-label="A pool in the tea">
+          <span class="at-word at-l" aria-hidden="true"><span>A pool</span></span>
+          <span class="at-script" aria-hidden="true"><span>in the</span></span>
+          <span class="at-word at-r" aria-hidden="true"><span>tea</span></span>
+        </h2>
+        <p class="arch-lede">Swim with the tea garden at the edge of the water, and the hills of Vagamon across the valley.</p>
+
+        <div id="arch-frame" class="arch-frame">
+          <div id="arch-pan" class="arch-pan">
+            <img src="assets/img/pool.webp" alt="Ice Hills pool surrounded by tea bushes with mountains behind">
+            <button class="poi" type="button" style="--x:41%;--y:60%" data-i="0"><i></i><span>Outdoor pool</span></button>
+            <button class="poi" type="button" style="--x:76%;--y:59%" data-i="1"><i></i><span>Sun deck</span></button>
+            <button class="poi" type="button" style="--x:82%;--y:40%" data-i="2"><i></i><span>Valley view</span></button>
+            <button class="poi" type="button" style="--x:45%;--y:84%" data-i="3"><i></i><span>Tea garden</span></button>
+          </div>
+          <div class="arch-shade"></div>
+        </div>
+
+        <div id="poi-card" class="poi-card" aria-live="polite">
+          <div class="poi-card-top"><span id="poi-n" class="poi-n">01</span><span class="poi-of">/ 04</span></div>
+          <h3 id="poi-title">Outdoor pool</h3>
+          <p id="poi-text">Open to the sky, with steps down from the deck.</p>
+          <div class="poi-bar"><b id="poi-bar"></b></div>
+        </div>
+
+        <div id="arch-cue" class="arch-cue" aria-hidden="true"><i></i><span>Scroll to open</span></div>
+      </div>
+    </section>
+
+    <!-- STAY: horizontal scroll -->
+    <section id="stay" class="sec-forest">
+      <div class="stay-pin">
+        <div class="wrap stay-head">
+          <div>
+            <span class="eyebrow light">Stay</span>
+            <h2 class="h2 light">Rooms with the <em>hills</em> in the window</h2>
+          </div>
+          <p class="stay-intro">From glass-fronted rooms in the main building to A-frame cottages out in the tea. Call us to check which rooms are free on your dates.</p>
+        </div>
+        <div class="stay-track" id="stay-track">
+          <article class="stay-card tilt">
+            <div class="stay-img"><img src="assets/img/room-view.webp" alt="Room with a balcony looking out at the hills"></div>
+            <div class="stay-body">
+              <span class="stay-k">Main building</span>
+              <h3>Valley-View Room</h3>
+              <p>Floor-to-ceiling glass and a balcony that opens onto the hills.</p>
+              <a href="#book" data-room="Valley-View Room" class="stay-link">Enquire <span>→</span></a>
+            </div>
+          </article>
+          <article class="stay-card tilt">
+            <div class="stay-img"><img src="assets/img/bedroom.webp" alt="Deluxe bedroom with a king bed"></div>
+            <div class="stay-body">
+              <span class="stay-k">Main building</span>
+              <h3>Deluxe Room</h3>
+              <p>A calm room with a king bed, warm wood and soft light.</p>
+              <a href="#book" data-room="Deluxe Room" class="stay-link">Enquire <span>→</span></a>
+            </div>
+          </article>
+          <article class="stay-card tilt">
+            <div class="stay-img"><img src="assets/img/suite.webp" alt="Large suite with a bed and a lounge area"></div>
+            <div class="stay-body">
+              <span class="stay-k">Main building</span>
+              <h3>Family Suite</h3>
+              <p>A large suite with a separate lounge, room for the whole family.</p>
+              <a href="#book" data-room="Family Suite" class="stay-link">Enquire <span>→</span></a>
+            </div>
+          </article>
+          <article class="stay-card tilt">
+            <div class="stay-img"><img src="assets/img/bedroom-2.webp" alt="Bedroom with garden view"></div>
+            <div class="stay-body">
+              <span class="stay-k">Main building</span>
+              <h3>Garden Room</h3>
+              <p>Wake up to the garden and the tea just outside.</p>
+              <a href="#book" data-room="Garden Room" class="stay-link">Enquire <span>→</span></a>
+            </div>
+          </article>
+          <article class="stay-card tilt">
+            <div class="stay-img"><img src="assets/img/cottages.webp" alt="A-frame cottages in the tea garden"></div>
+            <div class="stay-body">
+              <span class="stay-k">In the tea garden</span>
+              <h3>A-Frame Cottage</h3>
+              <p>A cottage of your own, out among the tea rows under the rock.</p>
+              <a href="#book" data-room="A-Frame Cottage" class="stay-link">Enquire <span>→</span></a>
+            </div>
+          </article>
+          <div class="stay-end">
+            <p>Not sure which room?</p>
+            <a href="tel:+919605077755" class="btn-copper"><span>Call +91 96050 77755</span></a>
+          </div>
+        </div>
+        <div class="wrap stay-progress"><span id="stay-bar"></span></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCES: stacking cards -->
+    <section id="experiences" class="sec-cream">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow">Experiences</span>
+          <h2 class="h2">Days in the <em>tea hills</em></h2>
+        </div>
+        <div class="stack">
+          <article class="stack-card" style="--i:0">
+            <div class="stack-text">
+              <span class="stack-n">01</span>
+              <h3>Walks through the tea</h3>
+              <p>Stone paths run between the tea rows, right from your door. Go early, when the mist is still on the hill.</p>
+            </div>
+            <div class="stack-img"><img src="assets/img/building.webp" alt="Tea garden in front of the resort"></div>
+          </article>
+          <article class="stack-card" style="--i:1">
+            <div class="stack-text">
+              <span class="stack-n">02</span>
+              <h3>Afternoons by the pool</h3>
+              <p>A swim, a lounger and the view across the valley. The best seat in the resort.</p>
+            </div>
+            <div class="stack-img"><img src="assets/img/pool.webp" alt="Pool with loungers"></div>
+          </article>
+          <article class="stack-card" style="--i:2">
+            <div class="stack-text">
+              <span class="stack-n">03</span>
+              <h3>Play area for the kids</h3>
+              <p>Slides, a climbing frame and an open lawn, with the hills behind.</p>
+            </div>
+            <div class="stack-img"><img src="assets/img/play-area.webp" alt="Children's play area and lawn"></div>
+          </article>
+          <article class="stack-card" style="--i:3">
+            <div class="stack-text">
+              <span class="stack-n">04</span>
+              <h3>Mornings at the window</h3>
+              <p>Tea in hand, the garden below and the cottages on the slope. No alarm needed.</p>
+            </div>
+            <div class="stack-img"><img src="assets/img/window-view.webp" alt="Morning view from a room"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY: parallax columns -->
+    <section id="gallery" class="sec-dark">
+      <div class="wrap gallery-head">
+        <span class="eyebrow light">Gallery</span>
+        <h2 class="h2 light">A look <em>around</em></h2>
+      </div>
+      <div class="gallery-cols">
+        <div class="gcol" data-speed="-0.18">
+          <img src="assets/img/building.webp" alt="Resort building on the tea hill">
+          <img src="assets/img/bedroom.webp" alt="Deluxe room">
+          <img src="assets/img/play-area.webp" alt="Play area">
+        </div>
+        <div class="gcol" data-speed="0.14">
+          <img src="assets/img/pool.webp" alt="Pool">
+          <img src="assets/img/cottages.webp" alt="Cottages">
+          <img src="assets/img/suite.webp" alt="Suite">
+        </div>
+        <div class="gcol" data-speed="-0.1">
+          <img src="assets/img/room-view.webp" alt="Room view">
+          <img src="assets/img/window-view.webp" alt="Window view">
+          <img src="assets/img/bedroom-2.webp" alt="Garden room">
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION: nearby places as simple cards -->
+    <section id="location" class="map-sec">
+      <div class="wrap">
+        <div class="map-intro">
+          <span class="eyebrow">Around the resort</span>
+          <h2 class="h2">Places to <em>visit</em></h2>
+          <p class="map-intro-p">Five easy day trips from Ice Hills. No map clicking, no pins — just the places themselves.</p>
+        </div>
+
+        <div class="place-grid">
+          <article class="place-card" data-reveal>
+            <img src="assets/img/places/meadows.webp" alt="Vagamon Meadows">
+            <div class="place-card-body">
+              <span>Grasslands · about 20 min</span>
+              <h3>Vagamon Meadows</h3>
+              <p>Open rolling meadows for walks, picnics and paragliding above the mist.</p>
+            </div>
+          </article>
+          <article class="place-card" data-reveal>
+            <img src="assets/img/places/pine-forest.webp" alt="Vagamon Pine Forest">
+            <div class="place-card-body">
+              <span>Forest walk · about 25 min</span>
+              <h3>Pine Forest</h3>
+              <p>Tall pine avenues and quiet paths. The classic Vagamon walk.</p>
+            </div>
+          </article>
+          <article class="place-card" data-reveal>
+            <img src="assets/img/places/kurisumala.webp" alt="Kurisumala">
+            <div class="place-card-body">
+              <span>Hill &amp; pilgrimage · about 30 min</span>
+              <h3>Kurisumala</h3>
+              <p>A green hill with a Christian pilgrimage path and wide views over the valley.</p>
+            </div>
+          </article>
+          <article class="place-card" data-reveal>
+            <img src="assets/img/places/thangalpara.webp" alt="Thangalpara">
+            <div class="place-card-body">
+              <span>Rock &amp; view · about 25 min</span>
+              <h3>Thangalpara</h3>
+              <p>A distinctive rock formation and viewpoint near Kolahalamedu.</p>
+            </div>
+          </article>
+          <article class="place-card place-card-wide" data-reveal>
+            <img src="assets/img/places/marmala.webp" alt="Marmala Falls">
+            <div class="place-card-body">
+              <span>Waterfall · about 45 min</span>
+              <h3>Marmala Falls</h3>
+              <p>A wooded waterfall trek near Teekoy, a favourite day trip from the hills.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="map-under">
+          <p class="map-addr">Ice Hills Resort<br>GTHS Valacode, Idukki, Kerala 685505</p>
+          <div class="map-actions">
+            <a class="btn-copper" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=9.70958367,76.97450236"><span>Open in Google Maps</span></a>
+            <a class="btn-line" href="tel:+919605077755">+91 96050 77755</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOK -->
+    <section id="book">
+      <canvas id="book-canvas" aria-hidden="true"></canvas>
+      <div class="book-tint"></div>
+      <div class="wrap book-grid">
+        <div class="book-text">
+          <span class="eyebrow light">Book your stay</span>
+          <h2 class="h2 light">Come up to the <em>hills</em></h2>
+          <p>Tell us your dates and how many of you are coming. We will reply on WhatsApp with the rooms that are free.</p>
+          <div class="book-contacts">
+            <a href="tel:+919605077755" class="bc"><span>Call</span><strong>+91 96050 77755</strong></a>
+            <a href="https://hawkhospitality.in" target="_blank" rel="noopener" class="bc"><span>Website</span><strong>hawkhospitality.in</strong></a>
+          </div>
+        </div>
+        <form id="book-form" class="book-form" data-reveal>
+          <h3>Check availability</h3>
+          <div class="f-row">
+            <label>Name<input name="name" required placeholder="Your name"></label>
+            <label>Phone<input name="phone" type="tel" required placeholder="+91"></label>
+          </div>
+          <div class="f-row">
+            <label>Check-in<input name="in" type="date" required></label>
+            <label>Check-out<input name="out" type="date" required></label>
+          </div>
+          <div class="f-row">
+            <label>Guests
+              <select name="guests"><option>2 adults</option><option>2 adults + 1 child</option><option>2 adults + 2 children</option><option>Family or group (5+)</option></select>
+            </label>
+            <label>Room
+              <select name="room" id="room-select"><option>Any room</option><option>Valley-View Room</option><option>Deluxe Room</option><option>Family Suite</option><option>Garden Room</option><option>A-Frame Cottage</option></select>
+            </label>
+          </div>
+          <button type="submit" class="btn-copper wide"><span>Send on WhatsApp</span></button>
+          <p class="f-note">Opens WhatsApp with your details filled in. Nothing is booked until we confirm.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer">
+    <div class="wrap">
+      <p class="eyebrow light">See you in Vagamon</p>
+      <a href="#book" class="foot-word"><span>Ice</span> <em>Hills</em><i>↗</i></a>
+      <div class="foot-row">
+        <div class="foot-brand">
+          <strong>Ice Hills Resort</strong>
+          <span>A Hawk Hospitality resort · GTHS Valacode, Idukki, Kerala 685505</span>
+        </div>
+        <div class="foot-links">
+          <a href="#about">Resort</a><a href="#stay">Stay</a><a href="#experiences">Experiences</a><a href="#location">Location</a><a href="#book">Book</a>
+        </div>
+      </div>
+      <div class="maker-band">
+        <div>
+          <span class="maker-k">Designed &amp; developed by</span>
+          <p class="maker-name">Harshil Nayee</p>
+          <p class="maker-note">This is a working demonstration. The finished website will be developed further, and the final experience will be more complete.</p>
+        </div>
+        <a href="tel:+917359273379" class="maker-phone"><span>Call or WhatsApp</span><strong>+91 73592 73379</strong></a>
+      </div>
+      <div class="foot-legal"><span>© 2026 Ice Hills Resort, Hawk Hospitality</span><span>Photos of the property · Demo build</span></div>
+    </div>
+  </footer>
+
+  <div id="toast" role="status"></div>
+
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/lenis.min.js"></script>
+  <script type="importmap">{ "imports": { "three": "./assets/vendor/three.module.min.js" } }</script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
