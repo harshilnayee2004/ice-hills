@@ -94,32 +94,21 @@
         <canvas id="mist-canvas" aria-hidden="true"></canvas>
 
         <div class="hero-ui">
-          <p class="hero-loc">Valacode, Idukki, Kerala</p>
+          <p class="hero-loc">Tea hills of Vagamon, Kerala</p>
           <div class="hero-actions">
             <a href="#about" class="btn-copper"><span>Explore the resort</span></a>
-            <a href="#book" class="btn-ghost">Book your stay</a>
           </div>
         </div>
 
         <div class="hero-bottom">
-          <span class="hb-side">Above the mist</span>
           <div class="mode-tabs" role="tablist" aria-label="Atmosphere">
-            <button class="mode-btn is-active" data-mode="day" role="tab">By day</button>
-            <i></i>
-            <button class="mode-btn" data-mode="night" role="tab">By night</button>
-            <i></i>
-            <button class="mode-btn" data-mode="mist" role="tab">In mist</button>
+            <button class="mode-btn is-active" data-mode="day" role="tab" aria-label="By day">Day</button>
+            <button class="mode-btn" data-mode="night" role="tab" aria-label="By night">Night</button>
+            <button class="mode-btn" data-mode="mist" role="tab" aria-label="In mist">Mist</button>
           </div>
-          <span class="hb-side">In the tea</span>
         </div>
 
-        <div class="hero-scroll-cue"><span>Scroll</span><i></i></div>
-
-        <div class="hero-card">
-          <div class="hc-head"><span class="hc-script">Ice Hills</span><button aria-label="Close" onclick="this.closest('.hero-card').remove()">&times;</button></div>
-          <p>A hill resort in a working tea garden, with valley-view rooms, A-frame cottages and a pool in the tea.</p>
-          <div class="hc-foot"><a href="#stay">Rooms</a><span>/</span><a href="#book">Book a stay</a></div>
-        </div>
+        <div class="hero-scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
 
         <div id="hero-mist-out"></div>
         <div id="hero-mist-text">
@@ -210,18 +199,19 @@
       </div>
     </section>
 
-    <!-- STAY: horizontal scroll -->
+    <!-- STAY: clear room grid (no sideways scroll trap) -->
     <section id="stay" class="sec-forest">
-      <div class="stay-pin">
-        <div class="wrap stay-head">
+      <div class="wrap stay-inner">
+        <div class="stay-head">
           <div>
             <span class="eyebrow light">Stay</span>
             <h2 class="h2 light">Rooms with the <em>hills</em> in the window</h2>
           </div>
           <p class="stay-intro">From glass-fronted rooms in the main building to A-frame cottages out in the tea. Call us to check which rooms are free on your dates.</p>
         </div>
-        <div class="stay-track" id="stay-track">
-          <article class="stay-card tilt">
+
+        <div class="stay-grid">
+          <article class="stay-card" data-reveal>
             <div class="stay-img"><img src="assets/img/room-view.webp" alt="Room with a balcony looking out at the hills"></div>
             <div class="stay-body">
               <span class="stay-k">Main building</span>
@@ -230,7 +220,7 @@
               <a href="#book" data-room="Valley-View Room" class="stay-link">Enquire <span>→</span></a>
             </div>
           </article>
-          <article class="stay-card tilt">
+          <article class="stay-card" data-reveal>
             <div class="stay-img"><img src="assets/img/bedroom.webp" alt="Deluxe bedroom with a king bed"></div>
             <div class="stay-body">
               <span class="stay-k">Main building</span>
@@ -239,7 +229,7 @@
               <a href="#book" data-room="Deluxe Room" class="stay-link">Enquire <span>→</span></a>
             </div>
           </article>
-          <article class="stay-card tilt">
+          <article class="stay-card" data-reveal>
             <div class="stay-img"><img src="assets/img/suite.webp" alt="Large suite with a bed and a lounge area"></div>
             <div class="stay-body">
               <span class="stay-k">Main building</span>
@@ -248,7 +238,7 @@
               <a href="#book" data-room="Family Suite" class="stay-link">Enquire <span>→</span></a>
             </div>
           </article>
-          <article class="stay-card tilt">
+          <article class="stay-card" data-reveal>
             <div class="stay-img"><img src="assets/img/bedroom-2.webp" alt="Bedroom with garden view"></div>
             <div class="stay-body">
               <span class="stay-k">Main building</span>
@@ -257,7 +247,7 @@
               <a href="#book" data-room="Garden Room" class="stay-link">Enquire <span>→</span></a>
             </div>
           </article>
-          <article class="stay-card tilt">
+          <article class="stay-card" data-reveal>
             <div class="stay-img"><img src="assets/img/cottages.webp" alt="A-frame cottages in the tea garden"></div>
             <div class="stay-body">
               <span class="stay-k">In the tea garden</span>
@@ -266,12 +256,11 @@
               <a href="#book" data-room="A-Frame Cottage" class="stay-link">Enquire <span>→</span></a>
             </div>
           </article>
-          <div class="stay-end">
+          <aside class="stay-end" data-reveal>
             <p>Not sure which room?</p>
             <a href="tel:+919605077755" class="btn-copper"><span>Call +91 96050 77755</span></a>
-          </div>
+          </aside>
         </div>
-        <div class="wrap stay-progress"><span id="stay-bar"></span></div>
       </div>
     </section>
 
@@ -344,13 +333,36 @@
       </div>
     </section>
 
-    <!-- LOCATION: nearby places as simple cards -->
+    <!-- LOCATION: Google Map + place cards -->
     <section id="location" class="map-sec">
       <div class="wrap">
         <div class="map-intro">
+          <span class="eyebrow">Location</span>
+          <h2 class="h2">Find us in the <em>tea hills</em></h2>
+          <p class="map-intro-p">Ice Hills Resort, GTHS Valacode, Idukki, Kerala 685505 — and five easy day trips nearby.</p>
+        </div>
+
+        <div class="map-embed">
+          <iframe
+            title="Ice Hills on Google Maps"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            src="https://www.google.com/maps?q=9.70958367,76.97450236&z=13&output=embed">
+          </iframe>
+        </div>
+
+        <div class="map-under">
+          <p class="map-addr">Ice Hills Resort<br>GTHS Valacode, Idukki, Kerala 685505</p>
+          <div class="map-actions">
+            <a class="btn-copper" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=9.70958367,76.97450236"><span>Open in Google Maps</span></a>
+            <a class="btn-line" href="tel:+919605077755">+91 96050 77755</a>
+          </div>
+        </div>
+
+        <div class="map-intro map-places-head">
           <span class="eyebrow">Around the resort</span>
           <h2 class="h2">Places to <em>visit</em></h2>
-          <p class="map-intro-p">Five easy day trips from Ice Hills. No map clicking, no pins — just the places themselves.</p>
         </div>
 
         <div class="place-grid">
@@ -394,14 +406,6 @@
               <p>A wooded waterfall trek near Teekoy, a favourite day trip from the hills.</p>
             </div>
           </article>
-        </div>
-
-        <div class="map-under">
-          <p class="map-addr">Ice Hills Resort<br>GTHS Valacode, Idukki, Kerala 685505</p>
-          <div class="map-actions">
-            <a class="btn-copper" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=9.70958367,76.97450236"><span>Open in Google Maps</span></a>
-            <a class="btn-line" href="tel:+919605077755">+91 96050 77755</a>
-          </div>
         </div>
       </div>
     </section>

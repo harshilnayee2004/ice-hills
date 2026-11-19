@@ -43,24 +43,24 @@ const titleLine = $(".ht-line");
 titleLine.innerHTML = [...titleLine.textContent].map((c) => `<span class="ch">${c === " " ? "&nbsp;" : c}</span>`).join("");
 
 gsap.set(".hero-h1 .ch", { yPercent: 110, opacity: 0 });
-gsap.set([".hero-eyebrow span", ".hero-script"], { opacity: 0, y: 30 });
-gsap.set([".hero-ui", ".hero-bottom", ".hero-scroll-cue", ".hero-card", "#top-header"], { opacity: 0 });
-gsap.set("#hero-fg", { scale: 1.08, yPercent: 4 });
+gsap.set([".hero-eyebrow span", ".hero-script"], { opacity: 0, y: 24 });
+gsap.set([".hero-ui", ".hero-bottom", ".hero-scroll-cue", "#top-header"], { opacity: 0 });
+gsap.set("#hero-fg", { scale: 1.1, yPercent: 5 });
 
 function heroIntro() {
   hero.playIntro();
-  const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-  tl.to("#hero-fg", { scale: 1, yPercent: 0, duration: 3.2, ease: "power3.out" }, 0)
-    .to(".hero-eyebrow span", { opacity: 1, y: 0, duration: 1.4 }, 0.9)
-    .to(".hero-h1 .ch", { yPercent: 0, opacity: 1, duration: 1.8, stagger: 0.06 }, 1.0)
-    .to(".hero-script", { opacity: 1, y: 0, duration: 1.8 }, 1.6)
-    .to("#top-header", { opacity: 1, duration: 1.2 }, 1.8)
-    .to([".hero-ui", ".hero-bottom", ".hero-scroll-cue"], { opacity: 1, duration: 1.2, stagger: 0.12 }, 2.1)
-    .to(".hero-card", { opacity: 1, duration: 1 }, 2.8);
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  tl.to("#hero-fg", { scale: 1, yPercent: 0, duration: 2.8, ease: "power3.out" }, 0)
+    .to(".hero-eyebrow span", { opacity: 1, y: 0, duration: 1.0 }, 0.55)
+    .to(".hero-h1 .ch", { yPercent: 0, opacity: 1, duration: 1.35, stagger: isMobile() ? 0.03 : 0.045 }, 0.7)
+    .to(".hero-script", { opacity: 1, y: 0, duration: 1.35 }, 1.15)
+    .to("#top-header", { opacity: 1, duration: 1.0 }, 1.35)
+    .to(".hero-ui", { opacity: 1, duration: 1.0 }, 1.55)
+    .to([".hero-bottom", ".hero-scroll-cue"], { opacity: 1, duration: 0.9 }, 1.75);
   return tl;
 }
 
-// Scroll: title emerges and lifts, camera pushes in, then dives into the clouds.
+// Scroll: title lifts, camera pushes in, then soft mist handoff.
 const heroTl = gsap.timeline({
   scrollTrigger: {
     trigger: "#hero",
@@ -71,14 +71,12 @@ const heroTl = gsap.timeline({
   },
 });
 heroTl
-  .to([".hero-ui", ".hero-card", ".hero-scroll-cue"], { opacity: 0, y: -20, duration: 0.12 }, 0)
-  .to(".hero-bottom", { opacity: 0, duration: 0.12 }, 0.08)
-  .to(".hero-title-layer", { yPercent: -16, scale: 1.08, duration: 0.5, ease: "none" }, 0)
-  .to(".hero-h1 .ch", { letterSpacing: "0.02em", duration: 0.5 }, 0)
-  .to("#hero-fg", { scale: 1.32, yPercent: 7, duration: 0.6, ease: "power1.in" }, 0)
+  .to([".hero-ui", ".hero-scroll-cue", ".hero-bottom"], { opacity: 0, y: -16, duration: 0.12 }, 0)
+  .to(".hero-title-layer", { yPercent: -14, scale: 1.06, duration: 0.5, ease: "none" }, 0)
+  .to("#hero-fg", { scale: 1.28, yPercent: 6, duration: 0.6, ease: "power1.in" }, 0)
   .to(".hero-title-layer", { opacity: 0, filter: "blur(8px)", duration: 0.16 }, 0.46)
   .to("#hero-mist-out", { opacity: 1, duration: 0.24, ease: "power1.in" }, 0.6)
-  .fromTo("#hero-mist-text", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.14 }, 0.8)
+  .fromTo("#hero-mist-text", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.14 }, 0.8)
   .to({}, { duration: 0.06 });
 
 /* ------------------------------------------------------------ Preloader */
@@ -111,7 +109,11 @@ gsap.timeline({ defaults: { ease: "power3.out" } })
   .to("#pre-h2 .ch", { yPercent: 0, opacity: 1, duration: 0.85, stagger: 0.028 }, 0.18)
   .to(".pre-script", { y: 0, opacity: 1, duration: 0.9 }, 0.45);
 
-const toLoad = ["assets/img/hero-day.webp", "assets/img/hero-night.webp", "assets/img/clouds.jpg"];
+const toLoad = [
+  "assets/img/hero-day.webp",
+  "assets/img/hero-night.webp",
+  "assets/img/clouds.jpg",
+];
 let loaded = 0;
 const setPreProgress = (n) => {
   const pct = Math.min(100, Math.round(n));
@@ -345,49 +347,23 @@ pool.pois.forEach((poi, i) => {
   });
 });
 
-/* ------------------------------------------------------------ Stay: horizontal */
-const track = $("#stay-track");
-const stayBar = $("#stay-bar");
-const stayDistance = () => Math.max(0, track.scrollWidth - window.innerWidth);
-gsap.to(track, {
-  x: () => -stayDistance(),
-  ease: "none",
-  scrollTrigger: {
-    trigger: "#stay",
-    start: "top top",
-    end: () => `+=${stayDistance()}`,
-    pin: ".stay-pin",
-    scrub: 0.6,
-    invalidateOnRefresh: true,
-    onUpdate: (self) => { stayBar.style.width = `${self.progress * 100}%`; },
-  },
-});
-
-$$(".tilt").forEach((card) => {
-  card.addEventListener("mousemove", (e) => {
-    const r = card.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    card.style.transform = `perspective(1000px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-6px)`;
-  });
-  card.addEventListener("mouseleave", () => { card.style.transform = ""; });
-});
-
 /* ------------------------------------------------------------ Experiences: stacking */
 const stackCards = $$(".stack-card");
 stackCards.forEach((card, i) => {
   if (i === stackCards.length - 1) return;
+  const shrink = isMobile() ? 0.97 + i * 0.008 : 0.92 + i * 0.015;
+  const dim = isMobile() ? 0.9 : 0.82;
   gsap.fromTo(card, { scale: 1, filter: "brightness(1)" }, {
-    scale: 0.92 + i * 0.015,
-    filter: "brightness(0.82)",
+    scale: shrink,
+    filter: `brightness(${dim})`,
     ease: "none",
-    scrollTrigger: { trigger: stackCards[i + 1], start: "top bottom", end: "top 30%", scrub: true },
+    scrollTrigger: { trigger: stackCards[i + 1], start: "top bottom", end: "top 35%", scrub: true },
   });
 });
 
 /* ------------------------------------------------------------ Gallery: columns */
 $$(".gcol").forEach((col) => {
-  const s = parseFloat(col.dataset.speed);
+  const s = parseFloat(col.dataset.speed) * (isMobile() ? 0.45 : 1);
   gsap.fromTo(col, { yPercent: -s * 60 }, { yPercent: s * 60, ease: "none", scrollTrigger: { trigger: "#gallery", start: "top bottom", end: "bottom top", scrub: true } });
 });
 
